@@ -13,9 +13,8 @@ import { useGetShopStats } from "../../api/useGetShopsStats";
 import { CustomerData } from "../../api/types";
 
 export default function ShopStatsTable() {
-  const { data, isLoading, isError } = useGetShopStats();
+  const { data, isError } = useGetShopStats();
 
-  // if (isLoading) return <CircularProgress />;
   if (isError)
     return (
       <Typography color="error">Błąd podczas ładowania danych.</Typography>
@@ -47,8 +46,7 @@ export default function ShopStatsTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {/* {data.map((customer: CustomerData, index: number) => ( */}
-          {data?.map((customer: CustomerData, index: number) => (
+          {data.map((customer: CustomerData, index: number) => (
             <TableRow key={index}>
               <TableCell>{customer.customer}</TableCell>
               <TableCell align="center">{customer.total_purchases}</TableCell>
